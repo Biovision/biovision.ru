@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap.min
+//= require ie-emulation-modes-warning
+//= require ie8-responsive-file-warning
+//= require ie10-viewport-bug-workaround
+//= require npm
+//= require holder.min
