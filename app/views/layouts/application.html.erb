@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div class="navbar-wrapper">
+<div class="navbar-wrapper" id="top">
   <div class="container">
 
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -64,35 +64,10 @@
         <div class="carousel-caption">
           <h1 style="font-size: 60px; ">BIOVISION</h1>
           <p>Комплексные IT-решения для Вашего бизнеса</p>
-          <p><br><br></br>
-          <!--
-          <p><a class="btn btn-lg btn-primary" href="#fit-class" role="button">Подробнее</a></p>
-          -->
+          <p><br /><br /></p>
         </div>
       </div>
     </div>
-    <!--
-    <div class="item">
-      <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Another example headline.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>One more for good measure.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-        </div>
-      </div>
-    </div>
-    -->
   </div>
 
   <!--
@@ -107,30 +82,23 @@
   -->
 </div><!-- /.carousel -->
 
-
-<!-- Marketing messaging and featurettes
-================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
-
-<div class="container marketing">
-  <a id="about"></a>
-
+<div class="container marketing" id="about">
   <!-- Three columns of text below the carousel -->
   <div class="row">
     <div class="col-lg-4">
-      <%= image_tag('artem_km.jpg', class: "img-circle", width:"140", height: "140") %>
+      <%= image_tag('artem_km.jpg', class: "img-circle", width: "140", height: "140") %>
       <h2>Хан-Магомедов Артём</h2>
-      <p>CIO студии BIOVISION</p>
+      <p>CEO студии BIOVISION</p>
       <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
-      <%= image_tag('maxim_km.jpg', class: "img-circle", width:"140", height: "140") %>
+      <%= image_tag('maxim_km.jpg', class: "img-circle", width: "140", height: "140") %>
       <h2>Хан-Магомедов Максим</h2>
       <p>Руководитель отдела разработки</p>
       <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4">
-      <%= image_tag('m_rusinova.jpg', class: "img-circle", width:"140", height: "140") %>
+      <%= image_tag('m_rusinova.jpg', class: "img-circle", width: "140", height: "140") %>
       <h2>Русинова Марина</h2>
       <p>Руководитель отдела маркетинга и пиара</p>
       <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
@@ -148,21 +116,29 @@
 
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading" style="margin-top: 0; ">FIT-Class. <span class="text-muted">Персональные тренировки, питание и мотивация онлайн.</span></h2>
-      <p class="lead">Проект посвящён персональным фитнес-прогарммам для женщин. Пользователь может зарегистрироваться на портале, заполнить специальную анкету и получить программу тренировок и питания, подобранную конкретно для него по его параметрам и запросам.
+      <h2 class="featurette-heading" style="margin-top: 0; ">
+        FIT-Class. <span class="text-muted">Персональные тренировки, питание и мотивация онлайн.</span>
+      </h2>
+      <p class="lead">
+        Проект посвящён персональным фитнес-программам для женщин. Пользователь может зарегистрироваться на портале,
+        заполнить специальную анкету и получить программу тренировок и питания, подобранную конкретно для него по его
+        параметрам и запросам.
         <br><br>
-        Для этого создан особый алгоритм, которые позволяет сделать подходящий выбор посредством обработки собранных данных.
+        Для этого создан особый алгоритм, который позволяет сделать подходящий выбор посредством обработки собранных
+        данных.
         <br><br>
-        На заключительном этапе куратор курса подтверждает программу для пользователя и, при необходимости, внеся дополнения или изменения, подключает программу для клиента. В данном проекте наша команда выполняла всю работу, связанную с сайтом и технической частью проекта (включая настройку и подключение оборудования, работу с командой SEO).
+        На заключительном этапе куратор курса подтверждает программу для пользователя и, при необходимости, внеся
+        дополнения или изменения, подключает программу для клиента. В данном проекте наша команда выполняла всю работу,
+        связанную с сайтом и технической частью проекта (включая настройку и подключение оборудования, работу с командой
+        SEO).
         <br><br>
-        Части, связанные со съемками видео и фото материала, координация работы со спортсменами, набор тестовой группы пользователей и работа с ними не входили в обязанности нашей команды.</p>
-      <p><a class="btn btn-lg btn-primary" href="http://fit-class.ru" role="button" target="_blank">Перейти на сайт &raquo;</a></p>
+        Части, связанные со съемками видео и фото материала, координация работы со спортсменами, набор тестовой группы
+        пользователей и работа с ними не входили в обязанности нашей команды.
+      </p>
+      <p><a class="btn btn-lg btn-primary" href="http://fit-class.ru" role="button" target="_blank" rel="external">Перейти на сайт &raquo;</a></p>
     </div>
     <div class="col-md-5">
       <%= image_tag('fit-class.jpg', class:"featurette-image img-responsive center-block", alt:"FIT-Class", style:"border: solid 1px #acacac; ") %>
-      <!--
-      <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-      -->
     </div>
   </div>
 
@@ -170,17 +146,22 @@
 
   <div class="row featurette">
     <div class="col-md-7 col-md-push-5">
-      <h2 class="featurette-heading" style="margin-top: 0; ">DECO-boutique. <span class="text-muted">Бутик элитной мебели и аксессуаров.</span></h2>
-      <p class="lead">Данный проект был создан нашей командой "под ключи", начиная от разработки концепции и дизайна сайта, до программирования всех его модулей. Магазин имеет в своём движке много нестандартных элементов для работы с товарами, заказами и клиентами.
+      <h2 class="featurette-heading" style="margin-top: 0; ">
+        DECO-boutique.
+        <span class="text-muted">Бутик элитной мебели и аксессуаров.</span>
+      </h2>
+      <p class="lead">
+        Данный проект был создан нашей командой &laquo;под ключ&raquo;, начиная от разработки концепции и дизайна сайта
+        до программирования всех его модулей. Магазин имеет в своём движке много нестандартных элементов для работы
+        с товарами, заказами и клиентами.
         <br><br>
-        Движок сайта позволяет максимально эффективно работать с целевой аудиторией. Помимо технической работы над порталом также была разработана и реализуется технология привлечения целевых клиентов.</p>
-      <p><a class="btn btn-lg btn-primary" href="http://deco-boutique.ru" role="button" target="_blank">Перейти на сайт &raquo;</a></p>
+        Движок сайта позволяет максимально эффективно работать с целевой аудиторией. Помимо технической работы
+        над порталом также была разработана и реализуется технология привлечения целевых клиентов.
+      </p>
+      <p><a class="btn btn-lg btn-primary" href="http://deco-boutique.ru" role="button" target="_blank" rel="external">Перейти на сайт &raquo;</a></p>
     </div>
     <div class="col-md-5 col-md-pull-7">
       <%= image_tag('deco-boutique.jpg', class:"featurette-image img-responsive center-block", alt:"DECO-boutique", style:"border: solid 1px #acacac; ") %>
-      <!--
-      <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-      -->
     </div>
   </div>
 
@@ -188,22 +169,26 @@
 
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading" style="margin-top: 0; ">EDEM-world. <span class="text-muted">Совместное решение различных дадач.</span></h2>
-      <p class="lead">Проект находится в стадии активной разработки. <br>
-        <br>
+      <h2 class="featurette-heading" style="margin-top: 0; ">
+        EDEM-world.
+        <span class="text-muted">Совместное решение различных задач.</span>
+      </h2>
+      <p class="lead">
+        Проект находится в стадии активной разработки.
+        <br><br>
         Портал является инструментом, позволяющим людям объединяться для совместного решения различных задач.
         <br><br>
-        Нашей командой выполнена разработка портала на всех этапах: от разработки технического задания, до программирования и верстки. Дизайн был предоставлен клиентом и заказывался отдельно для создания MVP.
-      <br><br>Первый этап работ завершен - разработан основной функционал портала. Готовится новый дизайн, разрабатываются дополнительные модули.
+        Нашей командой выполнена разработка портала на всех этапах: от разработки технического задания,
+        до программирования и вёрстки. Дизайн был предоставлен клиентом и заказывался отдельно для создания MVP.
+        <br><br>
+        Первый этап работ завершён - разработан основной функционал портала. Готовится новый дизайн, разрабатываются
+        дополнительные модули.
       </p>
 
-      <p><a class="btn btn-lg btn-primary" href="http://edem.world" role="button" target="_blank">Перейти на сайт &raquo;</a></p>
+      <p><a class="btn btn-lg btn-primary" href="http://edem.world" role="button" target="_blank" rel="external">Перейти на сайт &raquo;</a></p>
     </div>
     <div class="col-md-5">
       <%= image_tag('edem-world.jpg', class:"featurette-image img-responsive center-block", alt:"EDEM-world", style:"border: solid 1px #acacac; ") %>
-      <!--
-      <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-      -->
     </div>
   </div>
 
@@ -221,7 +206,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p class="pull-right"><a href="#">Наверх</a></p>
+    <p class="pull-right"><a href="#top">Наверх</a></p>
     <p>&copy; 2016 Студия BIOVISION</p>
   </footer>
 
