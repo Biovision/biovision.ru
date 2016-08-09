@@ -12,7 +12,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 set :domain, '89.108.79.250'
 set :deploy_to, '/var/www/biovision.ru'
 set :repository, 'git@github.com:Biovision/biovision.git'
-set :branch, 'master'
+set :branch, 'static_portfolio'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
