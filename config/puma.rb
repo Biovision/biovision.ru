@@ -2,10 +2,11 @@ require 'pathname'
 
 environment 'production'
 
-app_root = File.realpath("#{File.dirname(Pathname.new(__FILE__))}/../")
-logs_dir = "#{app_root}/log"
-tmp_dir  = "#{app_root}/tmp"
-pids_dir = "#{tmp_dir}/pids"
+app_root = Pathname.new('../../').expand_path(__FILE__).to_s
+
+logs_dir = File.realpath("#{app_root}/log")
+tmp_dir  = File.realpath("#{app_root}/tmp")
+pids_dir = File.realpath("#{tmp_dir}/pids")
 
 pidfile "#{pids_dir}/puma.pid"
 state_path "#{tmp_dir}/puma.state"
