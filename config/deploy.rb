@@ -16,7 +16,7 @@ set :branch, 'static_portfolio'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, %w(config/database.yml config/secrets.yml log tmp public/uploads)
+set :shared_paths, %w(config/database.yml config/secrets.yml log tmp public/uploads public/git)
 
 # Optional settings:
 set :user, 'developer'    # Username in the server to SSH to.
