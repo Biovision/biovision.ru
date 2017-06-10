@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: biovision
+  #username: biovision_ru
+  #password:
+  #host: localhost
+  #port: 5432
+  #schema_search_path: myapp,sharedapp,public
+  #min_messages: notice
+
+test:
+  <<: *default
+  database: biovision_test
+
+production:
+  <<: *default
+  database: biovision
+  username: biovision
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
