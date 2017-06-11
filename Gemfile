@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails', group: :production
 
 gem 'biovision-base', git: 'https://github.com/Biovision/biovision-base.git'
+# gem 'biovision-base', path: '/Users/maxim/Projects/Biovision/biovision-base'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
