@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611215248) do
+ActiveRecord::Schema.define(version: 20170701190701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20170611215248) do
     t.index ["agent_id"], name: "index_foreign_users_on_agent_id"
     t.index ["foreign_site_id"], name: "index_foreign_users_on_foreign_site_id"
     t.index ["user_id"], name: "index_foreign_users_on_user_id"
+  end
+
+  create_table "login_attempts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "agent_id"
+    t.inet "ip"
+    t.string "password", default: "", null: false
+    t.index ["agent_id"], name: "index_login_attempts_on_agent_id"
+    t.index ["user_id"], name: "index_login_attempts_on_user_id"
   end
 
   create_table "metric_values", id: :serial, force: :cascade do |t|
@@ -226,6 +237,8 @@ ActiveRecord::Schema.define(version: 20170611215248) do
   add_foreign_key "foreign_users", "agents"
   add_foreign_key "foreign_users", "foreign_sites"
   add_foreign_key "foreign_users", "users"
+  add_foreign_key "login_attempts", "agents"
+  add_foreign_key "login_attempts", "users"
   add_foreign_key "metric_values", "metrics"
   add_foreign_key "privilege_group_privileges", "privilege_groups"
   add_foreign_key "privilege_group_privileges", "privileges"
