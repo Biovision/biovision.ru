@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701190701) do
+ActiveRecord::Schema.define(version: 20170702135748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,7 +162,28 @@ ActiveRecord::Schema.define(version: 20170701190701) do
     t.string "name", null: false
     t.string "slug", null: false
     t.string "description", default: "", null: false
+    t.boolean "regional", default: false, null: false
     t.index ["slug"], name: "index_privileges_on_slug", unique: true
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.integer "users_count", default: 0, null: false
+    t.boolean "visible", default: true, null: false
+    t.boolean "locked", default: false, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "slug", null: false
+    t.string "long_slug", null: false
+    t.string "name", null: false
+    t.string "short_name"
+    t.string "locative"
+    t.string "image"
+    t.string "header_image"
+    t.string "parents_cache", default: "", null: false
+    t.integer "children_cache", default: [], null: false, array: true
   end
 
   create_table "tokens", id: :serial, force: :cascade do |t|
@@ -185,7 +206,9 @@ ActiveRecord::Schema.define(version: 20170701190701) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "privilege_id", null: false
+    t.bigint "region_id"
     t.index ["privilege_id"], name: "index_user_privileges_on_privilege_id"
+    t.index ["region_id"], name: "index_user_privileges_on_region_id"
     t.index ["user_id"], name: "index_user_privileges_on_user_id"
   end
 
@@ -224,8 +247,10 @@ ActiveRecord::Schema.define(version: 20170701190701) do
     t.string "phone"
     t.string "image"
     t.string "notice"
+    t.bigint "region_id"
     t.index ["agent_id"], name: "index_users_on_agent_id"
     t.index ["email"], name: "index_users_on_email"
+    t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["screen_name"], name: "index_users_on_screen_name"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
@@ -243,11 +268,14 @@ ActiveRecord::Schema.define(version: 20170701190701) do
   add_foreign_key "privilege_group_privileges", "privilege_groups"
   add_foreign_key "privilege_group_privileges", "privileges"
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "regions", "regions", column: "parent_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "tokens", "agents"
   add_foreign_key "tokens", "users"
   add_foreign_key "user_privileges", "privileges"
+  add_foreign_key "user_privileges", "regions"
   add_foreign_key "user_privileges", "users"
   add_foreign_key "users", "agents"
+  add_foreign_key "users", "regions"
   add_foreign_key "users", "users", column: "inviter_id", on_update: :cascade, on_delete: :nullify
   add_foreign_key "users", "users", column: "native_id", on_update: :cascade, on_delete: :nullify
 end
