@@ -1,4 +1,4 @@
-# This migration comes from biovision_base_engine (originally 20170302000003)
+# This migration comes from biovision_base_engine (originally 20170302000004)
 class CreateCodeTypes < ActiveRecord::Migration[5.1]
   def up
     unless CodeType.table_exists?

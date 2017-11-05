@@ -1,5 +1,5 @@
 # This migration comes from biovision_base_engine (originally 20170302000103)
-class CreatePrivilegeGroups < ActiveRecord::Migration[5.0]
+class CreatePrivilegeGroups < ActiveRecord::Migration[5.1]
   def up
     unless PrivilegeGroup.table_exists?
       create_table :privilege_groups do |t|
@@ -11,6 +11,7 @@ class CreatePrivilegeGroups < ActiveRecord::Migration[5.0]
 
       add_index :privilege_groups, :slug, unique: true
 
+      PrivilegeGroup.create(slug: 'region_managers', name: 'Управляющие регионами')
       PrivilegeGroup.create(slug: 'editors', name: 'Редакторы')
       PrivilegeGroup.create(slug: 'editorial_office', name: 'Члены редакции')
     end
