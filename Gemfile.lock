@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/maxim/Projects/Biovision/gems/biovision-base
+GIT
+  remote: https://github.com/Biovision/biovision-base.git
+  revision: c0715e520a0bcd6ea2dbbd47def5d40878066105
   specs:
     biovision-base (0.8.171104)
       bcrypt (~> 3.1)
