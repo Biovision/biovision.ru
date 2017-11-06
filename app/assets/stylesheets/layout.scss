@@ -3,3 +3,7 @@ body {
   background-image: linear-gradient(-180deg, #e1e6ec 2%, #f0f4f7 96%) fixed, radial-gradient(at 50% 100%, rgba(255, 255, 255, .2) 0%, rgba(0, 0, 0, .5) 200%) fixed;
   background-blend-mode: normal, color-burn;
 }
+
+#main {
+  padding: 0;
+}
