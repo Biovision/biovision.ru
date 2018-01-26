@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105130463) do
+ActiveRecord::Schema.define(version: 20180126105750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,24 @@ ActiveRecord::Schema.define(version: 20171105130463) do
     t.string "keywords", default: "", null: false
     t.string "description", default: "", null: false
     t.text "body", default: "", null: false
+    t.bigint "language_id"
+    t.index ["language_id"], name: "index_editable_pages_on_language_id"
+  end
+
+  create_table "feedback_requests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "language_id"
+    t.bigint "agent_id"
+    t.inet "ip"
+    t.boolean "processed"
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "image"
+    t.text "comment"
+    t.index ["agent_id"], name: "index_feedback_requests_on_agent_id"
+    t.index ["language_id"], name: "index_feedback_requests_on_language_id"
   end
 
   create_table "foreign_sites", force: :cascade do |t|
@@ -102,6 +120,15 @@ ActiveRecord::Schema.define(version: 20171105130463) do
     t.index ["user_id"], name: "index_foreign_users_on_user_id"
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "users_count", default: 0, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.string "slug", null: false
+    t.string "code", null: false
+  end
+
   create_table "login_attempts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,6 +138,44 @@ ActiveRecord::Schema.define(version: 20171105130463) do
     t.string "password", default: "", null: false
     t.index ["agent_id"], name: "index_login_attempts_on_agent_id"
     t.index ["user_id"], name: "index_login_attempts_on_user_id"
+  end
+
+  create_table "media_files", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "media_folder_id"
+    t.bigint "user_id"
+    t.bigint "agent_id"
+    t.inet "ip"
+    t.boolean "locked", default: false, null: false
+    t.string "uuid", null: false
+    t.string "snapshot"
+    t.string "file"
+    t.string "mime_type"
+    t.string "original_name"
+    t.string "name", null: false
+    t.string "description"
+    t.index ["agent_id"], name: "index_media_files_on_agent_id"
+    t.index ["media_folder_id"], name: "index_media_files_on_media_folder_id"
+    t.index ["user_id"], name: "index_media_files_on_user_id"
+  end
+
+  create_table "media_folders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "agent_id"
+    t.inet "ip"
+    t.integer "parent_id"
+    t.integer "media_files_count", default: 0, null: false
+    t.integer "depth", limit: 2, default: 0, null: false
+    t.string "uuid", null: false
+    t.string "snapshot"
+    t.string "parents_cache", default: "", null: false
+    t.string "name", null: false
+    t.integer "children_cache", default: [], null: false, array: true
+    t.index ["agent_id"], name: "index_media_folders_on_agent_id"
+    t.index ["user_id"], name: "index_media_folders_on_user_id"
   end
 
   create_table "metric_values", force: :cascade do |t|
@@ -217,6 +282,15 @@ ActiveRecord::Schema.define(version: 20171105130463) do
     t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
+  create_table "user_languages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "language_id", null: false
+    t.index ["language_id"], name: "index_user_languages_on_language_id"
+    t.index ["user_id"], name: "index_user_languages_on_user_id"
+  end
+
   create_table "user_privileges", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -273,34 +347,48 @@ ActiveRecord::Schema.define(version: 20171105130463) do
     t.string "image"
     t.string "notice"
     t.string "search_string"
+    t.bigint "language_id"
     t.index ["agent_id"], name: "index_users_on_agent_id"
     t.index ["email"], name: "index_users_on_email"
+    t.index ["language_id"], name: "index_users_on_language_id"
     t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["screen_name"], name: "index_users_on_screen_name"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
-  add_foreign_key "agents", "browsers"
-  add_foreign_key "codes", "agents"
-  add_foreign_key "codes", "code_types"
-  add_foreign_key "codes", "users"
-  add_foreign_key "foreign_users", "agents"
-  add_foreign_key "foreign_users", "foreign_sites"
-  add_foreign_key "foreign_users", "users"
-  add_foreign_key "login_attempts", "agents"
-  add_foreign_key "login_attempts", "users"
-  add_foreign_key "metric_values", "metrics"
-  add_foreign_key "privilege_group_privileges", "privilege_groups"
-  add_foreign_key "privilege_group_privileges", "privileges"
+  add_foreign_key "agents", "browsers", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "codes", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "codes", "code_types", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "codes", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "editable_pages", "languages", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "feedback_requests", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "feedback_requests", "languages", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "foreign_users", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "foreign_users", "foreign_sites", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "foreign_users", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "login_attempts", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "login_attempts", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "media_files", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "media_files", "media_folders", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "media_files", "users", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "media_folders", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "media_folders", "media_folders", column: "parent_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "media_folders", "users", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "metric_values", "metrics", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "regions", "regions", column: "parent_id", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "tokens", "agents"
-  add_foreign_key "tokens", "users"
-  add_foreign_key "user_privileges", "privileges"
+  add_foreign_key "tokens", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "tokens", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "user_languages", "languages", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "user_languages", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "user_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_privileges", "regions"
-  add_foreign_key "user_privileges", "users"
-  add_foreign_key "user_profiles", "users"
-  add_foreign_key "users", "agents"
+  add_foreign_key "user_privileges", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "user_profiles", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "users", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "users", "languages", on_update: :cascade, on_delete: :nullify
   add_foreign_key "users", "regions"
   add_foreign_key "users", "users", column: "inviter_id", on_update: :cascade, on_delete: :nullify
   add_foreign_key "users", "users", column: "native_id", on_update: :cascade, on_delete: :nullify

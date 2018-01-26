@@ -2,6 +2,35 @@ body {
   background-color: #ffffff;
 }
 
+#main-header {
+  .logo {
+    font: 100 2.4rem/2.4rem $font-family-logo;
+
+    a:link,
+    a:visited {
+      border: .1rem solid $link-color;
+      border-radius: .2rem;
+      display: block;
+      padding: 1rem .8rem;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    a:hover {
+      border-color: $link-color-hover;
+      box-shadow: 0 -.2rem .4rem $link-color;
+    }
+
+    span {
+      display: block;
+      font-size: 3.6rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}
+
 #main {
   padding: 0;
 }
