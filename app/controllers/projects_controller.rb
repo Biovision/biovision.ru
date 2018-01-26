@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
 
   # get /projects/:id
   def show
-    @entity = Project.find_by(id: params[:id], visible: true)
+    @entity = Project.find_by(slug: params[:id], visible: true)
     if @entity.nil?
       handle_http_404("Cannot find non-deleted project #{params[:id]}")
     end

@@ -115,3 +115,44 @@ body {
     padding: .8rem;
   }
 }
+
+.breadcrumbs {
+  padding: .8rem;
+}
+
+article {
+  padding: .8rem .4rem;
+}
+
+.project {
+  figure {
+    margin: 0 auto;
+    max-width: 64rem;
+
+    img {
+      box-shadow: 0 0 .4rem .2rem rgba(0, 0, 0, .25);
+    }
+  }
+
+  figcaption {
+    border-bottom: $border-secondary;
+    color: #222;
+    padding: .8rem 0 .4rem;
+  }
+
+  > div {
+    font-weight: 300;
+    padding: .8rem;
+
+    img {
+      max-height: 40rem;
+      max-width: 40rem;
+    }
+  }
+
+  > footer {
+    border-top: $border-secondary;
+    font-size: $font-size-decreased;
+    padding: .8rem;
+  }
+}
