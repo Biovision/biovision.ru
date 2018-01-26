@@ -18,7 +18,7 @@ body {
 
     a:hover {
       border-color: $link-color-hover;
-      box-shadow: 0 -.2rem .4rem $link-color;
+      box-shadow: -.2rem -.2rem .4rem $link-color, .2rem .2rem .4rem $link-color-hover;
     }
 
     span {

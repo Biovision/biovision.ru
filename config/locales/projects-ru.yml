@@ -1,0 +1,61 @@
+ru:
+  activerecord:
+    models:
+      project: "Публикация"
+    attributes:
+      project:
+        description: "Описание"
+        highlight: "Показывать на главной"
+        image: "Изображение"
+        image_alt_text: "Альтернативный текст для изображения"
+        lead: "Аннотация"
+        name: "Название"
+        priority: "Порядок сортировки"
+        slug: "Идентификатор для URL"
+        url: "Ссылка на сайт"
+        uuid: "UUID"
+        visible: "Показывать"
+  admin:
+    projects:
+      nav_item:
+        description: "Управление проектами в портфолио"
+        text: "Проекты"
+      index:
+        heading: "Проекты"
+        title: "Проекты, страница %{page}"
+      show:
+        title: "Проект «%{name}»"
+    index:
+      biovision_project:
+        heading: "Модуль проектов"
+      dashboard:
+        biovision_projects:
+          heading: "Проекты"
+  projects:
+    index:
+      title: "Проекты, страница %{page}"
+      heading: "Проекты"
+      nav_text: "Проекты"
+    edit:
+      title: "Редактирование проекта"
+      heading: "Редактирование проекта"
+    destroy:
+      success: "Проект успешно удалён"
+    form:
+      guidelines:
+        description: "Максимум 50000 символов"
+        image: "Максимальный размер — 3000×3000, формат — JPG или PNG."
+        image_alt_text: "Краткое описание того, что происходит на картинке. До 200 символов."
+        lead: "Краткая суть, максимум 250 символов."
+        name: "Максимум 100 символов."
+        slug: "Только латинские буквы, цифры, точки, дефисы и подчёркивания. Максимум 100 символов."
+        url: "Будет открываться при нажатии на название источника"
+      placeholders:
+        url: "https://example.com/"
+    new:
+      title: "Добавление проекта"
+      heading: "Новый проект"
+  index:
+    index:
+      recent_projects:
+        heading: "Недавние проекты"

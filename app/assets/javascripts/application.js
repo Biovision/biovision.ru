@@ -11,6 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery3
 //= require biovision/base/biovision.js
+//= require biovision/base/biovision-sliders.js
 //= require_tree .

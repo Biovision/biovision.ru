@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126105750) do
+ActiveRecord::Schema.define(version: 20180126120628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -232,6 +232,22 @@ ActiveRecord::Schema.define(version: 20180126105750) do
     t.string "slug", null: false
     t.string "description", default: "", null: false
     t.index ["slug"], name: "index_privileges_on_slug", unique: true
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
+    t.boolean "highlight", default: true, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.string "uuid", null: false
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.string "url"
+    t.string "image"
+    t.string "image_alt_text"
+    t.string "lead"
+    t.text "description"
   end
 
   create_table "regions", force: :cascade do |t|
