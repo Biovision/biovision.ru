@@ -34,3 +34,84 @@ body {
 #main {
   padding: 0;
 }
+
+.biovision-slider {
+  display: flex;
+
+  button {
+    background: no-repeat center / contain;
+    border: none;
+    cursor: pointer;
+    flex: none;
+    width: 2rem;
+  }
+
+  .prev {
+    background-image: image_url('icons/arrow-left.svg');
+
+    &:hover {
+      background-image: image_url('icons/arrow-left-hover.svg');
+    }
+  }
+
+  .next {
+    background-image: image_url('icons/arrow-right.svg');
+
+    &:hover {
+      background-image: image_url('icons/arrow-right-hover.svg');
+    }
+  }
+
+  ul {
+    display: flex;
+    flex: 1;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 1rem 0;
+  }
+
+  li {
+    flex: none;
+    list-style: none;
+    margin: 0 1rem;
+    transition: .125s;
+    width: 20rem;
+  }
+}
+
+#index-projects {
+  padding: .8rem;
+
+  .biovision-slider {
+    li {
+      margin: 0;
+      padding: 0 .4rem;
+      width: 100%;
+
+      > div {
+        margin: 0 auto;
+        max-width: 64rem;
+      }
+    }
+  }
+
+  figure {
+    text-align: center;
+
+    img {
+      box-shadow: 0 0 .4rem .2rem rgba(0, 0, 0, .25);
+    }
+  }
+
+  figcaption {
+    font: 500 2rem $font-family-heading;
+    padding: .2rem 0;
+  }
+
+  .lead {
+    border-top: $border-secondary;
+    color: #222;
+    font-weight: 300;
+    padding: .8rem;
+  }
+}

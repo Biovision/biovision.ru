@@ -1,3 +1,6 @@
 <% content_for :meta_title, t('.title') %>
 <% content_for :meta_description, t('.description') %>
 
+<article>
+  <%= render partial: 'index/index/projects', locals: { collection: Project.highlighted.list_for_visitors } %>
+</article>
