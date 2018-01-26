@@ -1,0 +1,5 @@
+<section id="index-feedback">
+  <h2>Обратная связь</h2>
+
+  <%= render partial: 'feedback_requests/form', locals: { entity: FeedbackRequest.new, accept_comment: true } %>
+</section>

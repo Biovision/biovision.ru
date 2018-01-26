@@ -116,6 +116,17 @@ body {
   }
 }
 
+#index-feedback {
+  h2 {
+    text-align: center;
+  }
+
+  form {
+    margin: 0 auto;
+    max-width: 32rem;
+  }
+}
+
 .breadcrumbs {
   padding: .8rem;
 }
