@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Biovision/biovision-base.git
-  revision: f7ec5669105c4ac27bed3f29fad580d81647bedd
+  revision: f090bedb10504ceead61fe36237b13267041068c
   specs:
     biovision-base (0.11.180127)
       bcrypt (~> 3.1)
@@ -215,7 +215,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.1.4)
+    uglifier (4.1.5)
       execjs (>= 0.3.0, < 3)
     web-console (3.5.1)
       actionview (>= 5.0)
