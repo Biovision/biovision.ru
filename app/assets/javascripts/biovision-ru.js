@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (projects_block) {
         const next_button = projects_block.querySelector('button.next');
+        const slider = projects_block.querySelector('.biovision-slider');
 
         if (next_button) {
             let timeout;
@@ -21,7 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
 
-            window.setTimeout(next_slide, 5000);
+            slider.addEventListener('mouseover', function() {
+                window.clearTimeout(timeout);
+            });
+
+            slider.addEventListener('mouseout', function() {
+                timeout = window.setTimeout(next_slide, 5000);
+            });
+
+            timeout = window.setTimeout(next_slide, 5000);
         }
     }
 });
