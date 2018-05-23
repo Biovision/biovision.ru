@@ -23,7 +23,7 @@ set :branch, 'master'
 # Some plugins already add folders to shared_dirs like `mina/rails` add `public/assets`, `vendor/bundle` and many more
 # run `mina -d` to see all folders and files already included in `shared_dirs` and `shared_files`
 set :shared_dirs, fetch(:shared_dirs, []).push('public/uploads', 'public/git', 'tmp', 'log')
-set :shared_files, fetch(:shared_files, []).push('.env')
+set :shared_files, fetch(:shared_files, []).push('config/master.key', '.env')
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.

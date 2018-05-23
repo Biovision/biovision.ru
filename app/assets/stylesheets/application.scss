@@ -1,5 +1,47 @@
-@import "shared";
-@import "biovision/base/default";
-@import "biovision/base/default_application";
-@import "biovision/base/layout";
-@import "layout";
+@import url('https://fonts.googleapis.com/css?family=Kanit:100,900');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+
+#splash {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+
+  > div {
+    border: .1rem solid #147fff;
+    border-radius: .2rem;
+    color: #147fff;
+    display: block;
+    font: 100 2.4rem/1 'Kanit', sans-serif;
+    margin: auto;
+    padding: 1rem .8rem;
+    text-decoration: none;
+    transition: .25s;
+
+    &:hover {
+      border-color: #ff4d14;
+      box-shadow: -.2rem -.2rem .4rem #147fff, .2rem .2rem .4rem #ff4d14;
+      color: #ff4d14;
+    }
+
+    span {
+      display: block;
+      font-size: 3.6rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}

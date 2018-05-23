@@ -8,19 +8,19 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="format-detection" content="telephone=no"/>
-  <%= render 'shared/meta_texts' %>
+  <%#= render 'shared/meta_texts' %>
 </head>
 <body>
-<%= render 'layouts/application/header' %>
+<%#= render 'layouts/application/header' %>
 
 <main id="main">
-  <%= render 'shared/flash_messages' %>
-  <%= render 'shared/breadcrumbs' %>
+  <%#= render 'shared/flash_messages' %>
+  <%#= render 'shared/breadcrumbs' %>
 
   <%= yield %>
 </main>
 
-<%= render 'layouts/application/footer' %>
+<%#= render 'layouts/application/footer' %>
 <%= render 'shared/counters' %>
 </body>
 </html>

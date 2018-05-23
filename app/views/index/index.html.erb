@@ -1,7 +1,5 @@
-<% content_for :meta_title, t('.title') %>
-<% content_for :meta_description, t('.description') %>
+<% content_for :meta_title, 'Biovision' %>
 
-<article>
-  <%= render partial: 'index/index/projects', locals: { collection: Project.highlighted.list_for_visitors } %>
-  <%= render 'index/index/feedback' %>
-</article>
+<div id="splash">
+  <div><span>Bio</span>vision</div>
+</div>
